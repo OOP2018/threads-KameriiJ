@@ -14,11 +14,6 @@ public class Counter {
 	public void add(int amount) { total += amount; }
 	
 	/**
-	 * Subtrack an amount from the total.
-	 */
-	public void subtrack(int amount) { total -= amount; }
-	
-	/**
 	 * Get the total value of counter.
 	 */
 	public long get() { return total; }
