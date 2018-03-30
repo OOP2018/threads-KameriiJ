@@ -2,10 +2,20 @@
 public class ThreadSum {
 	public static void main( String[] args ) {
          // upper limit of numbers to add/subtract to Counter
-         final int LIMIT = 1000;
+         final int LIMIT = 10000000;
          // The counter that accumulates a total.
+         
          Counter counter = new Counter();
          runThreads( counter, LIMIT );
+         System.out.println("----------------------------------------");
+         Counter counter2 = new CounterWithLock( );
+         runThreads(counter2, LIMIT);
+         System.out.println("----------------------------------------");
+         Counter counter3 = new SynchronousCounter();
+         runThreads(counter3, 1000000);
+         System.out.println("----------------------------------------");
+         Counter counter4 = new AtomicCounter();
+         runThreads(counter4, LIMIT);
     }
 	public static void runThreads( Counter counter, final int limit ) {
          // two tasks that add and subtract values using same Counter
