@@ -26,13 +26,40 @@ The threads use the counter to add and subtract values.
 
 answer the questions (1.1 - 1.3)
 
+	1.1) The total should be 0 (add & subtract).
+		 It isn't always the same because counter is unsynchronize object.
+		 There are 2 processes that run in the same time(thread0 and thread1). 
+		 When the CPU computes the result, it doesn't have the same pattern 
+		 to compute the result in everytime. So, the total of counter that be used 
+		 in the processes will not the real total of thread0 or thread1.
+		 
+	1.2) (1) -> 0.017682 sec
+		 (2) -> 0.017732 sec
+		 (3) -> 0.016559 sec
+
 ## 2. Implications for Multi-threaded Applications
 
 How might this affect real applications?  
-
+	
+	There are many customers deposit, withdraw, or transfer money in the same time
+	and it will run with the error results that be called from the counter.
+	
 ## 3. Counter with ReentrantLock
 
 answer questions 3.1 - 3.4
+
+	3.1) The most results are possitive number and it isn't always 0.
+		 (1) -> 0.207213 sec
+		 (2) -> 0.210054 sec
+		 (3) -> 0.206850 sec
+		 
+	3.2) The results are differnt from problem1 because of Lock that use with the counter.
+		 It makes the threads call the total after another one set the new total value of counter.
+		 So, it doesn't have case that the threads call the same total value in the same time.
+		 
+	3.3)
+	
+	3.4)
 
 ## 4. Counter with synchronized method
 
